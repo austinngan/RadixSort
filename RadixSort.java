@@ -24,6 +24,7 @@ public class RadixSort{
     for (int i=0;i<10;i++){
       buckets[i]=new SortableLinkedList();
     }
+    //amount of times to sort by
     for (int i=0;i<data.size();i++){
       if (length(data.get(i))>maxDigits){
         maxDigits=length(data.get(i));
@@ -36,19 +37,6 @@ public class RadixSort{
       holder.extend(data);
       merge(data, buckets);
     }
-  }
-
-  public static void main(String[] args){
-    SortableLinkedList joe=new SortableLinkedList();
-    joe.add(4);
-    joe.add(2);
-    joe.add(7);
-    joe.add(123);
-    joe.add(9);
-    joe.add(234);
-    joe.add(22);
-    radixSortSimple(joe);
-    System.out.println(joe.toString());
   }
 
 }
