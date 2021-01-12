@@ -5,7 +5,11 @@ public class RadixSort{
   }
 
   public static int length(int n){
+    if (n<0){
+      n=n*-1;
+    }
     return (int) (Math.log10(n))+1;
   }
+
 
 }
