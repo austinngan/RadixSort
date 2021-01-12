@@ -11,5 +11,10 @@ public class RadixSort{
     return (int) (Math.log10(n))+1;
   }
 
+  public static void merge(MyLinkedList original, MyLinkedList[] buckets){
+    for (MyLinkedList i:buckets){
+      original.extend(i);
+    }
+  }
 
 }
