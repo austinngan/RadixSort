@@ -19,22 +19,17 @@ public class Radix{
 
   public static void radixSortSimple(SortableLinkedList data){
     SortableLinkedList[] buckets = new SortableLinkedList[10];
-    SortableLinkedList holder= new SortableLinkedList();
-    int maxDigits=0;
+    int maxDigits=1;
     for (int i=0;i<10;i++){
       buckets[i]=new SortableLinkedList();
     }
     //amount of times to sort by
-    for (int i=0;i<data.size();i++){
-      if (length(data.get(i))>maxDigits){
-        maxDigits=length(data.get(i));
+    for (int i=0;i<maxDigits;i++){
+      while (data.size()>0){
+        maxDigits=Math.max((length(data.get(0))),maxDigits);
+        buckets[nth(data.get(0),i)].add(data.get(0));
+        data.remove(0);
       }
-    }
-    for (int y=0;y<maxDigits;y++){
-      for (int i=0;i<data.size();i++){
-        (buckets[nth(Math.abs(data.get(i)),y)]).add(data.get(i));
-      }
-      holder.extend(data);
       merge(data, buckets);
     }
   }
