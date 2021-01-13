@@ -1,4 +1,4 @@
-public class RadixSort{
+public class Radix{
 
   public static int nth(int n, int col){
     return n/(int)Math.pow(10,col)%10;
@@ -37,6 +37,23 @@ public class RadixSort{
       holder.extend(data);
       merge(data, buckets);
     }
+  }
+
+  public static void radixSort(SortedLinkedList data){
+    SortableLinkedList holder= new SortableLinkedList();
+    SortableLinkedList pos= new SortableLinkedList();
+    SortableLinkedList negative= new SortableLinkedList();
+    for (int i=0;i<data.size();i++){
+      if (data.get(i)>=0){
+        pos.add(data.get(i));
+      }
+      else{
+        negative.add(data.get(i));
+      }
+    }
+    radixSortSimple(pos);
+    radixSortSimple(negative);
+    holder.extend(data);
   }
 
 }
