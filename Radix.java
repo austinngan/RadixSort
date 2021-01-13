@@ -32,7 +32,7 @@ public class Radix{
     }
     for (int y=0;y<maxDigits;y++){
       for (int i=0;i<data.size();i++){
-        (buckets[nth(data.get(i),y)]).add(data.get(i));
+        (buckets[nth(Math.abs(data.get(i)),y)]).add(data.get(i));
       }
       holder.extend(data);
       merge(data, buckets);
@@ -43,6 +43,7 @@ public class Radix{
     SortableLinkedList holder= new SortableLinkedList();
     SortableLinkedList pos= new SortableLinkedList();
     SortableLinkedList negative= new SortableLinkedList();
+    SortableLinkedList negativeReversed= new SortableLinkedList();
     for (int i=0;i<data.size();i++){
       if (data.get(i)>=0){
         pos.add(data.get(i));
@@ -54,7 +55,10 @@ public class Radix{
     radixSortSimple(pos);
     radixSortSimple(negative);
     holder.extend(data);
-    data.extend(negative);
+    for (int i=0;i<negative.size();i++){
+      negativeReversed.add(0, negative.get(i));
+    }
+    data.extend(negativeReversed);
     data.extend(pos);
   }
 
