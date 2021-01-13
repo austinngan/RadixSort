@@ -39,7 +39,7 @@ public class Radix{
     }
   }
 
-  public static void radixSort(SortedLinkedList data){
+  public static void radixSort(SortableLinkedList data){
     SortableLinkedList holder= new SortableLinkedList();
     SortableLinkedList pos= new SortableLinkedList();
     SortableLinkedList negative= new SortableLinkedList();
@@ -54,6 +54,8 @@ public class Radix{
     radixSortSimple(pos);
     radixSortSimple(negative);
     holder.extend(data);
+    data.extend(negative);
+    data.extend(pos);
   }
 
 }
