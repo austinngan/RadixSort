@@ -35,7 +35,6 @@ public class Radix{
   }
 
   public static void radixSort(SortableLinkedList data){
-    SortableLinkedList holder= new SortableLinkedList();
     SortableLinkedList pos= new SortableLinkedList();
     SortableLinkedList negative= new SortableLinkedList();
     SortableLinkedList negativeReversed= new SortableLinkedList();
@@ -49,7 +48,6 @@ public class Radix{
     }
     radixSortSimple(pos);
     radixSortSimple(negative);
-    holder.extend(data);
     for (int i=0;i<negative.size();i++){
       negativeReversed.add(0, negative.get(i));
     }
